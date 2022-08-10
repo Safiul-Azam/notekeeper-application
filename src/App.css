@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 .App {
-  text-align: center;
+  width: 1150px;
+  margin: auto;
 }
-
+*{
+  font-family: 'Yeseva One', cursive;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
