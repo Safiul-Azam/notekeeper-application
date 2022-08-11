@@ -1,14 +1,15 @@
+import {getStorage} from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
-import {getDatabase} from "firebase/database"
 const firebaseConfig = {
-  apiKey: "AIzaSyBM7oXDSYg3qOhwEwwHHLjuMlBzCP9WXH8",
-  authDomain: "notekeeper-application.firebaseapp.com",
-  databaseURL: "https://notekeeper-application-default-rtdb.firebaseio.com",
-  projectId: "notekeeper-application",
-  storageBucket: "notekeeper-application.appspot.com",
-  messagingSenderId: "814653746209",
-  appId: "1:814653746209:web:bbf9296d8779b004c20760"
+  apiKey: "AIzaSyDXRLFXlqWQjPocilq_i5Bse1CS5UI-V_I",
+  authDomain: "note-app-35e75.firebaseapp.com",
+  projectId: "note-app-35e75",
+  storageBucket: "note-app-35e75.appspot.com",
+  messagingSenderId: "878640423779",
+  appId: "1:878640423779:web:1129f205b6d714a0e8e956"
 };
-
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app)
+
+export const storage = getStorage(app);
+export const db = getFirestore(app);

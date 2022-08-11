@@ -1,9 +1,10 @@
 import React from 'react';
+import ShowNote from './ShowNote';
 
 const Home = () => {
     return (
         <div>
-           <h2>it is a runtime</h2> 
+            <ShowNote></ShowNote>
         </div>
     );
 };
