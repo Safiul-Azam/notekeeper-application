@@ -2,8 +2,10 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import { db } from '../firebase';
 import DeleteNote from "./DeleteNote";
+import UpdateNote from "./UpdateNote";
 const ShowNote = () => {
     const [notes, setNotes] = useState([])
     useEffect(() => {
@@ -34,6 +36,7 @@ const ShowNote = () => {
                                     <small class="text-muted">{note.createdAt.toDate().toDateString()}</small>
                                 </div>
                                 <DeleteNote id={note.id}></DeleteNote>
+                                <UpdateNote id={note.id}></UpdateNote>
                         </div>
                     </div>)
                 )
