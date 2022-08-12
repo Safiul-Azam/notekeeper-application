@@ -4,7 +4,7 @@ import { Form, Button, Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { db } from '../firebase';
 
-const UpdateNote = ({id}) => {
+const UpdateNote = ({ id }) => {
     console.log(id);
     //modal state
     const [show, setShow] = useState(false);
@@ -21,8 +21,7 @@ const UpdateNote = ({id}) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
     //submit
-    const handleSubmit = async(e) => {
-        console.log(id);
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (!formData.title || !formData.note) {
             toast('please fill all input field')
@@ -40,32 +39,28 @@ const UpdateNote = ({id}) => {
     }
     return (
         <div>
-            <Button variant="primary" onClick={()=> handleShow(id)}>
-                Launch demo modal
+            <Button variant="primary" onClick={() => handleShow(id)}>
+                Update
             </Button>
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Note Id: {id}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <div className='w-50 mx-auto mt-4  border p-4'>
-                        <h3 className='text-center'>Add a Note</h3>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formBasicText">
-                                <Form.Label>Title</Form.Label>
-                                <Form.Control name='title' onChange={handleChange} value={formData.title} type="text" placeholder="Write title" />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="formBasicText">
-                                <Form.Label>Note</Form.Label>
-                                <Form.Control name='note' onChange={handleChange} value={formData.note} type="text" as="textarea" placeholder="Write your Note" />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Add A Note
-                            </Button>
-                        </Form>
-                    </div>
+                <Modal.Body className='w-100 mx-auto mt-4 p-4'>
+                    <h3 className='text-center'>Add a Note</h3>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicText">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control name='title' onChange={handleChange} value={formData.title} type="text" placeholder="Write title" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicText">
+                            <Form.Label>Note</Form.Label>
+                            <Form.Control name='note' onChange={handleChange} value={formData.note} type="text" as="textarea" placeholder="Write your Note" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Update Note
+                        </Button>
+                    </Form>
                 </Modal.Body>
             </Modal>
 
