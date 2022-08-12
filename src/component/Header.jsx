@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Navbar, Container } from 'react-bootstrap';
 
 
 const Header = () => {
@@ -8,9 +7,10 @@ const Header = () => {
     return (
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-                <Link to='/' class="navbar-brand text-danger">Note Keeper</Link>
+                <Link to='/' class="navbar-brand text-success fs-2">Note Keeper</Link>
+                <Link to='/' className='text-success fs-3 text-decoration-none'>Home</Link>
                 <div class="d-flex">
-                        <Link to='/add-note' class="btn btn-outline-success" type="submit">New Note</Link>
+                        <Link to='/add-note' class="btn btn-success" type="submit">New Note</Link>
                 </div>
             </div>
         </nav>

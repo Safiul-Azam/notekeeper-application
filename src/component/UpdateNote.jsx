@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { db } from '../firebase';
+import { FiEdit } from "react-icons/fi";
 
 const UpdateNote = ({ id }) => {
     console.log(id);
@@ -39,15 +40,15 @@ const UpdateNote = ({ id }) => {
     }
     return (
         <div>
-            <Button variant="primary" onClick={() => handleShow(id)}>
-                Update
+            <Button variant="" onClick={() => handleShow(id)}>
+               <FiEdit className='fs-5 text-info'/>
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Note Id: {id}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='w-100 mx-auto mt-4 p-4'>
-                    <h3 className='text-center'>Add a Note</h3>
+                    <h3 className='text-center'>Update Note</h3>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicText">
                             <Form.Label>Title</Form.Label>

@@ -8,10 +8,11 @@ import Pagination from "./Pagination";
 import UpdateNote from "./UpdateNote";
 const ShowNote = () => {
     const [notes, setNotes] = useState([])
-    const [clickPage, setClickPage] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [notesPerPage, setNotePerPage] = useState(6)
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+        setLoading(true)
         const notesRef = collection(db, "Notes");
         const q = query(notesRef, orderBy("createdAt", "desc"));
         onSnapshot(q, (snapshot) => {
@@ -20,6 +21,7 @@ const ShowNote = () => {
                 ...doc.data(),
             }));
             setNotes(notes);
+            setLoading(false)
         });
     }, []);
     // pagination logic
@@ -35,18 +37,18 @@ const ShowNote = () => {
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 {
                     notes.length === 0 ? (
-                        <p className="fs-1 text-warning">No notes have been added yet</p>
+                        loading ? <p>Loading....</p>:<p className="fs-1 text-warning">No notes have been added yet</p>
                     ) : (
                         currentNote.map((note) => <div class="col">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">{note.title}</h5>
+                                    <h5 class="card-title text-success fs-4">{note.title}</h5>
                                     <p class="card-text">{note.note}</p>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">{note.createdAt.toDate().toDateString()}</small>
                                 </div>
-                                <div className="d-flex justify-content-between">
+                                <div className="d-flex justify-content-center p-1">
                                     <DeleteNote id={note.id}></DeleteNote>
                                     <UpdateNote id={note.id}></UpdateNote>
                                 </div>

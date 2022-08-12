@@ -1,17 +1,21 @@
 import { deleteDoc, doc } from 'firebase/firestore';
 import React from 'react';
 import { db } from '../firebase';
+import { FaTrashAlt } from "react-icons/fa";
+import { Button } from 'react-bootstrap';
 
-const DeleteNote = ({id}) => {
-    const handleDelete =async (id)=>{
-        
- await deleteDoc(doc(db, "Notes", `${id}`));
+const DeleteNote = ({ id }) => {
+    const handleDelete = async (id) => {
+
+        await deleteDoc(doc(db, "Notes", `${id}`));
 
     }
     return (
         <div>
-            <button onClick={()=>handleDelete(id)} className='btn btn-danger' >Delete</button>
-        </div>
+            <Button variant="" onClick={() => handleDelete(id)}>
+                <FaTrashAlt className='fs-5 text-danger' />
+            </Button>
+        </div >
     );
 };
 
