@@ -3,7 +3,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { db } from '../firebase';
-console.log(db);
 const ShowNote = () => {
     const [notes, setNotes] = useState([])
     useEffect(() => {
@@ -15,12 +14,11 @@ const ShowNote = () => {
                 ...doc.data(),
             }));
             setNotes(notes);
-            console.log(notes);
         });
     }, []);
 
     return (
-        <div class="row row-cols-1 row-cols-md-3 g-2">
+        <div class="container mx-auto mt-3 row row-cols-1 row-cols-md-3 g-2">
             {
                 notes.length === 0 ? (
                     <p>it is no found</p>
