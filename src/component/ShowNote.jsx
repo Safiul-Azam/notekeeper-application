@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { db } from '../firebase';
+import DeleteNote from "./DeleteNote";
 const ShowNote = () => {
     const [notes, setNotes] = useState([])
     useEffect(() => {
@@ -21,7 +22,7 @@ const ShowNote = () => {
         <div class="container mx-auto mt-3 row row-cols-1 row-cols-md-3 g-2">
             {
                 notes.length === 0 ? (
-                    <p>it is no found</p>
+                    <p className="fs-1 text-warning">No notes have been added yet</p>
                 ) : (
                     notes.map((note) => <div class="col">
                         <div class="card">
@@ -32,6 +33,7 @@ const ShowNote = () => {
                                 <div class="card-footer">
                                     <small class="text-muted">{note.createdAt.toDate().toDateString()}</small>
                                 </div>
+                                <DeleteNote id={note.id}></DeleteNote>
                         </div>
                     </div>)
                 )
