@@ -5,7 +5,11 @@ import { useState } from 'react';
 import { db } from '../firebase';
 import DeleteNote from "./DeleteNote";
 import Pagination from "./Pagination";
+import PinnedNote from "./PinnedNote";
 import UpdateNote from "./UpdateNote";
+
+import { BsPin } from 'react-icons/bs'
+import { Button } from "react-bootstrap";
 const ShowNote = () => {
     const [notes, setNotes] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -37,7 +41,7 @@ const ShowNote = () => {
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 {
                     notes.length === 0 ? (
-                        loading ? <p>Loading....</p>:<p className="fs-1 text-warning">No notes have been added yet</p>
+                        loading ? <p className="text-center fs-3 text-warning">Loading....</p> : <p className="fs-1 text-warning">No notes have been added yet</p>
                     ) : (
                         currentNote.map((note) => <div class="col">
                             <div class="card h-100">
@@ -57,9 +61,11 @@ const ShowNote = () => {
                     )
                 }
             </div>
+
             <div className="d-flex justify-content-center mt-4">
                 <Pagination notesPerPage={notesPerPage} totalNotes={notes.length} paginate={paginate}></Pagination>
             </div>
+
         </div>
     );
 };
